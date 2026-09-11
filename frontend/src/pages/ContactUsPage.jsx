@@ -29,8 +29,7 @@ const ContactUsPage = () => {
     setLoading(true);
     setError('');
     try {
-      const apiHost = window.location.hostname || 'localhost';
-      const response = await fetch(`http://${apiHost}:5000/api/contact`, {
+      const response = await fetch('https://marinebayhotel.onrender.com/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),
