@@ -1,0 +1,593 @@
+.rooms-page {
+  width: 100%;
+  min-height: 100vh;
+  background-color: #F5F5F5;
+  color: #1a1a1a;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Hero Section */
+.rooms-hero-section {
+  position: relative;
+  width: 100%;
+  height: 60vh;
+  min-height: 420px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.rooms-hero-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.rooms-hero-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.rooms-hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.35);
+}
+
+.rooms-hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+}
+
+.rooms-hero-heading {
+  font-family: var(--font-serif);
+  font-size: 4rem;
+  font-weight: 400;
+  color: #ffffff;
+  letter-spacing: 0.02em;
+  text-shadow: 0 4px 18px rgba(0, 0, 0, 0.6);
+}
+
+/* Content Section */
+.rooms-content-section {
+  width: 100%;
+  background-color: #F5F5F5;
+  padding: 5rem 2rem 7rem 2rem;
+}
+
+.rooms-container {
+  max-width: 1050px;
+  margin: 0 auto;
+}
+
+.rooms-main-title {
+  font-family: var(--font-serif);
+  font-size: 3.2rem;
+  font-weight: 400;
+  text-align: center;
+  color: #1a1a1a;
+  margin-bottom: 5rem;
+  letter-spacing: 0.01em;
+}
+
+/* Rooms List */
+.rooms-list {
+  display: flex;
+  flex-direction: column;
+  gap: 5rem;
+}
+
+.room-card-item {
+  display: grid;
+  grid-template-columns: 1.18fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+/* Left Column: Image with Price Tag */
+.room-image-column {
+  width: 100%;
+}
+
+.room-image-frame {
+  position: relative;
+  width: 100%;
+  height: 290px;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+}
+
+.room-image-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.room-card-item:hover .room-image-frame img {
+  transform: scale(1.03);
+}
+
+.room-price-tag {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: #E8E8E8;
+  border: 1px solid #9C9C9C;
+  border-top: none;
+  border-right: none;
+  padding: 5px 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.room-price-tag span {
+  font-family: var(--font-serif);
+  font-size: 1.05rem;
+  color: #1a1a1a;
+  font-weight: 400;
+}
+
+/* Right Column: Details & Actions */
+.room-details-column {
+  display: flex;
+  flex-direction: column;
+  max-width: 320px;
+}
+
+.room-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.2rem;
+  width: 100%;
+}
+
+.room-type-title {
+  font-family: var(--font-serif);
+  font-size: 1.45rem;
+  font-weight: 400;
+  color: #1a1a1a;
+}
+
+.room-offers-btn {
+  background-color: #1e1e1e;
+  color: #ffffff;
+  border-radius: 999px;
+  padding: 6px 24px;
+  font-size: 0.95rem;
+  font-family: var(--font-serif);
+  letter-spacing: 0.02em;
+  transition: background-color 0.25s, transform 0.2s;
+}
+
+.room-offers-btn:hover {
+  background-color: #000000;
+  transform: translateY(-1px);
+}
+
+/* Date segment inputs */
+.room-dates-row {
+  display: flex;
+  gap: 0.6rem;
+  margin-bottom: 1.4rem;
+}
+
+.date-segment-input {
+  border: 1px solid #c4c4c4;
+  border-radius: 6px;
+  background-color: #ffffff;
+  color: #222222;
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  text-align: center;
+  padding: 6px 8px;
+  width: 48px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.date-segment-input.yyyy {
+  width: 68px;
+}
+
+.date-segment-input:focus {
+  border-color: #1e1e1e;
+}
+
+.date-segment-input::placeholder {
+  color: #888888;
+}
+
+/* Checkbox options */
+.room-options-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+  margin-bottom: 1.6rem;
+  width: 220px;
+}
+
+.room-option-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+}
+
+.option-label {
+  font-family: var(--font-serif);
+  font-size: 1.05rem;
+  color: #1a1a1a;
+}
+
+.custom-checkbox {
+  width: 20px;
+  height: 20px;
+  border-radius: 3px;
+  background-color: #e5e7eb;
+  border: 1px solid #9ca3af;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  transition: all 0.2s ease;
+}
+
+.custom-checkbox.checked {
+  background-color: #1e1e1e;
+  border-color: #1e1e1e;
+}
+
+/* Action buttons */
+.room-buttons-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+
+.room-action-btn {
+  width: 230px;
+  background-color: #1e1e1e;
+  color: #ffffff;
+  border-radius: 999px;
+  padding: 10px 16px;
+  font-family: var(--font-serif);
+  font-size: 0.98rem;
+  letter-spacing: 0.01em;
+  text-align: center;
+  transition: background-color 0.25s, transform 0.2s, box-shadow 0.2s;
+}
+
+.room-action-btn:hover {
+  background-color: #000000;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.18);
+}
+
+/* Modal Styling */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(4px);
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+}
+
+.modal-card {
+  background: #ffffff;
+  color: #1a1a1a;
+  border-radius: 16px;
+  padding: 2.5rem;
+  max-width: 480px;
+  width: 100%;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
+  animation: modalFadeIn 0.25s ease-out;
+}
+
+@keyframes modalFadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.modal-title {
+  font-family: var(--font-serif);
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+}
+
+.modal-price {
+  font-size: 1.1rem;
+  color: #4b5563;
+  margin-bottom: 1.5rem;
+}
+
+.modal-details {
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 1.2rem;
+  margin-bottom: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  font-size: 0.95rem;
+}
+
+.modal-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: flex-end;
+}
+
+.modal-confirm-btn {
+  background-color: #1e1e1e;
+  color: #ffffff;
+  padding: 10px 22px;
+  border-radius: 999px;
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+.modal-confirm-btn:hover {
+  background-color: #000000;
+}
+
+.modal-cancel-btn {
+  background: transparent;
+  color: #6b7280;
+  border: 1px solid #d1d5db;
+  padding: 10px 18px;
+  border-radius: 999px;
+  font-size: 0.95rem;
+}
+
+.modal-cancel-btn:hover {
+  color: #111;
+  border-color: #111;
+}
+
+/* Modal close X button */
+.modal-card {
+  position: relative;
+}
+
+.online-notice-card {
+  text-align: center;
+  padding: 2.75rem 2.5rem 2.5rem;
+}
+
+.online-notice-message {
+  max-width: 380px;
+  margin: 0 auto 1.8rem;
+  color: #555555;
+  font-family: var(--font-sans);
+  font-size: 0.98rem;
+  line-height: 1.7;
+}
+
+.modal-close-x {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: transparent;
+  border: none;
+  color: #9ca3af;
+  cursor: pointer;
+  padding: 4px;
+  line-height: 1;
+  transition: color 0.2s;
+}
+
+.modal-close-x:hover {
+  color: #1a1a1a;
+}
+
+/* Booking summary pill row */
+.modal-booking-summary {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  background: #f3f4f6;
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  margin-bottom: 1.4rem;
+  font-size: 0.88rem;
+  color: #374151;
+}
+
+/* Guest form fields */
+.modal-guest-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.modal-field-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.modal-field-label {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  color: #6b7280;
+}
+
+.modal-input {
+  background: #f9fafb;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  padding: 9px 12px;
+  font-size: 0.92rem;
+  font-family: var(--font-sans);
+  color: #1a1a1a;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.modal-input:focus {
+  border-color: #1e1e1e;
+  box-shadow: 0 0 0 1px #1e1e1e;
+}
+
+.modal-error-msg {
+  color: #dc2626;
+  font-size: 0.85rem;
+  margin: 0;
+}
+
+.modal-confirm-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Modal Success / Confirmation state */
+.modal-success-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 1rem 0;
+}
+
+.modal-success-icon {
+  color: #10b981;
+  margin-bottom: 1rem;
+}
+
+.modal-success-title {
+  font-family: var(--font-serif);
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+  color: #1a1a1a;
+}
+
+.modal-confirmation-number {
+  font-size: 0.9rem;
+  color: #6b7280;
+  margin-bottom: 0.8rem;
+}
+
+.modal-success-msg {
+  font-size: 0.9rem;
+  color: #6b7280;
+  max-width: 340px;
+  margin-bottom: 1.8rem;
+  line-height: 1.6;
+}
+
+.modal-done-btn {
+  background-color: #1e1e1e;
+  color: #ffffff;
+  padding: 10px 32px;
+  border-radius: 999px;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.modal-done-btn:hover {
+  background-color: #000000;
+}
+
+
+/* Responsive */
+@media (max-width: 900px) {
+  .rooms-main-title {
+    font-size: 2.4rem;
+    margin-bottom: 3.5rem;
+  }
+
+  .rooms-hero-heading {
+    font-size: 2.8rem;
+  }
+
+  .room-card-item {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .room-image-frame {
+    height: 240px;
+  }
+
+  .room-details-column {
+    max-width: 100%;
+  }
+
+  .room-options-group,
+  .room-buttons-group {
+    width: 100%;
+    max-width: 280px;
+  }
+
+  .room-action-btn {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .rooms-hero-section {
+    height: 48vh;
+    min-height: 320px;
+  }
+
+  .rooms-content-section {
+    padding: 3.5rem 1rem 5rem;
+  }
+
+  .rooms-main-title {
+    font-size: 2rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .rooms-list {
+    gap: 3.5rem;
+  }
+
+  .room-image-frame {
+    height: 210px;
+  }
+
+  .room-dates-row {
+    gap: 0.35rem;
+  }
+
+  .date-segment-input {
+    width: 44px;
+  }
+
+  .date-segment-input.yyyy {
+    width: 64px;
+  }
+}

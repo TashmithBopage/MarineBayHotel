@@ -1,0 +1,241 @@
+.offers-page {
+  width: 100%;
+  min-height: 100vh;
+  background-color: #F5F5F5;
+  color: #1a1a1a;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Hero Section */
+.offers-hero-section {
+  position: relative;
+  width: 100%;
+  height: 60vh;
+  min-height: 420px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.offers-hero-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.offers-hero-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.offers-hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.38);
+}
+
+.offers-hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+}
+
+.offers-hero-heading {
+  font-family: var(--font-serif);
+  font-size: 4.2rem;
+  font-weight: 400;
+  color: #ffffff;
+  letter-spacing: 0.02em;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.65);
+}
+
+/* Main Content Section */
+.offers-content-section {
+  width: 100%;
+  background-color: #F5F5F5;
+  padding: 6rem 3rem 10rem 3rem;
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+.offers-container {
+  max-width: 1150px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* Exact Figma "No Active Offers" Display */
+.no-offers-container {
+  width: 100%;
+  padding: 2rem 0;
+}
+
+.no-offers-text {
+  font-family: var(--font-serif);
+  font-size: 3rem;
+  font-weight: 400;
+  color: #1a1a1a;
+  line-height: 1.35;
+  letter-spacing: 0.01em;
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.bullet-symbol {
+  font-size: 2.8rem;
+  line-height: 1.1;
+  color: #1a1a1a;
+}
+
+/* Active Offers Grid (when offers exist) */
+.active-offers-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2.5rem;
+}
+
+.offer-card {
+  background: #ffffff;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.offer-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
+}
+
+.offer-card-image {
+  position: relative;
+  width: 100%;
+  height: 220px;
+}
+
+.offer-card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.discount-tag {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: #1e1e1e;
+  color: #ffffff;
+  font-family: var(--font-serif);
+  padding: 4px 14px;
+  border-radius: 999px;
+  font-size: 0.9rem;
+}
+
+.offer-card-body {
+  padding: 1.8rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.offer-card-body h3 {
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  margin-bottom: 0.8rem;
+  color: #1a1a1a;
+}
+
+.offer-card-body p {
+  color: #6b7280;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+  flex: 1;
+}
+
+.offer-card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 1rem;
+  border-top: 1px solid #f3f4f6;
+}
+
+.promo-code {
+  font-family: monospace;
+  font-size: 0.95rem;
+  color: #1a1a1a;
+  font-weight: 600;
+}
+
+.btn-claim {
+  background: #1e1e1e;
+  color: #ffffff;
+  border-radius: 999px;
+  padding: 8px 20px;
+  font-size: 0.9rem;
+  font-family: var(--font-serif);
+  transition: background 0.2s;
+}
+
+.btn-claim:hover {
+  background: #000000;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .offers-hero-heading {
+    font-size: 2.8rem;
+  }
+
+  .offers-content-section {
+    padding: 4rem 1.5rem 6rem 1.5rem;
+  }
+
+  .no-offers-text {
+    font-size: 2rem;
+    gap: 0.6rem;
+  }
+
+  .bullet-symbol {
+    font-size: 2rem;
+  }
+
+  .active-offers-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .offers-hero-section {
+    height: 48vh;
+    min-height: 320px;
+  }
+
+  .offers-content-section {
+    padding: 3.5rem 1rem 5rem;
+  }
+
+  .offers-hero-heading {
+    font-size: 2.5rem;
+  }
+
+  .no-offers-text {
+    font-size: 1.35rem;
+    line-height: 1.5;
+  }
+}
