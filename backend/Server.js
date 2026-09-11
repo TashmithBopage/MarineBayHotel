@@ -5,12 +5,9 @@ require('dotenv').config({ override: true });
 
 const app = express();
 
-// Allow requests from the React dev server and production build
+// Allow requests from local development and deployed frontend hosts.
 app.use(cors({
-  origin: (origin, callback) => {
-    const isLocalOrigin = !origin || /^http:\/\/(localhost|127\.0\.0\.1)(:\d+)?$/.test(origin);
-    callback(null, isLocalOrigin);
-  },
+  origin: true,
   methods: ['GET', 'POST'],
   allowedHeaders: ['Content-Type'],
 }));
