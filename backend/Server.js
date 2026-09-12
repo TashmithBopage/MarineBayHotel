@@ -1,9 +1,6 @@
-const dns = require('dns');
-dns.setDefaultResultOrder('ipv4first');
-
 const express = require('express');
 const cors = require('cors');
-const nodemailer = require('nodemailer');
+const { Resend } = require('resend');
 require('dotenv').config({ override: true });
 
 const app = express();
@@ -17,30 +14,16 @@ app.use(cors({
 
 app.use(express.json());
 
-const hasPlaceholderCredentials = [process.env.SMTP_USER, process.env.SMTP_PASS, process.env.SMTP_FROM]
-  .some((value) => value?.includes('your-gmail-') || value?.includes('your-16-character'));
+const hasPlaceholderCredentials = process.env.RESEND_API_KEY?.includes('your-resend-api-key');
 
-const mailTransporter = process.env.SMTP_HOST && process.env.SMTP_USER && process.env.SMTP_PASS && !hasPlaceholderCredentials
-  ? nodemailer.createTransport({
-      host: process.env.SMTP_HOST,
-      port: Number(process.env.SMTP_PORT || 587),
-      secure: process.env.SMTP_SECURE === 'true',
-      family: 4,
-      auth: {
-        user: process.env.SMTP_USER,
-        pass: process.env.SMTP_PASS,
-      },
-    })
+const resendClient = process.env.RESEND_API_KEY && !hasPlaceholderCredentials
+  ? new Resend(process.env.RESEND_API_KEY)
   : null;
 
-if (!mailTransporter) {
-  console.warn(hasPlaceholderCredentials
-    ? 'Email service is not configured. Replace the example SMTP values in backend/.env with your real Gmail address and App Password.'
-    : 'Email service is not configured. Create backend/.env using backend/.env.example.');
+if (!resendClient) {
+  console.warn('Email service is not configured. Set RESEND_API_KEY in backend/.env with your real Resend API key.');
 } else {
-  mailTransporter.verify()
-    .then(() => console.log('SMTP email service is ready.'))
-    .catch((error) => console.error('SMTP configuration error:', error.message));
+  console.log('Resend email service is configured.');
 }
 
 // ─── Health Check ──────────────────────────────────────────────────────────────
@@ -56,7 +39,7 @@ app.post('/api/contact', async (req, res) => {
     return res.status(400).json({ success: false, error: 'Name, email and message are required.' });
   }
 
-  if (!mailTransporter) {
+  if (!resendClient) {
     return res.status(503).json({
       success: false,
       error: 'Email service is not configured. Please try again later.',
@@ -64,8 +47,8 @@ app.post('/api/contact', async (req, res) => {
   }
 
   try {
-    const deliveryInfo = await mailTransporter.sendMail({
-      from: process.env.SMTP_FROM || process.env.SMTP_USER,
+    const { data, error } = await resendClient.emails.send({
+      from: 'Marine Bay Hotel <onboarding@resend.dev>',
       to: 'mesithb@gmail.com',
       replyTo: email,
       subject: `New Marine Bay Hotel inquiry from ${name}`,
@@ -77,7 +60,16 @@ app.post('/api/contact', async (req, res) => {
         message,
       ].join('\n'),
     });
-    console.log(`Contact email accepted by SMTP: ${deliveryInfo.messageId}`);
+
+    if (error) {
+      console.error('Contact email could not be sent:', error.message);
+      return res.status(502).json({
+        success: false,
+        error: 'We could not send your message right now. Please try again later.',
+      });
+    }
+
+    console.log(`Contact email accepted by Resend: ${data.id}`);
   } catch (mailError) {
     console.error('Contact email could not be sent:', mailError.message);
     return res.status(502).json({
