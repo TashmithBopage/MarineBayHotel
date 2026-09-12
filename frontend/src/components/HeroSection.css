@@ -186,4 +186,18 @@
   .search-label {
     font-size: 0.95rem;
   }
+
+  .search-btn {
+    width: auto;
+    align-self: center;
+    padding: 0.65rem 1.25rem;
+    font-size: 0.9rem;
+    font-weight: 700;
+    gap: 0.5rem;
+  }
+
+  .search-arrow-icon {
+    width: 18px;
+    height: 18px;
+  }
 }

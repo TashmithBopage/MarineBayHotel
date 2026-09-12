@@ -357,4 +357,12 @@
   .gallery-grid-image-wrapper {
     height: 220px;
   }
+
+  .lightbox-top-bar {
+    padding-top: 4.5rem;
+  }
+
+  .lightbox-controls {
+    transform: translateY(0.4rem);
+  }
 }

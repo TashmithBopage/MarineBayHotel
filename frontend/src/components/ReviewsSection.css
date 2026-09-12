@@ -376,8 +376,11 @@
   }
 
   .write-review-btn {
-    width: 100%;
-    font-size: 1rem;
+    width: auto;
+    align-self: center;
+    padding: 0.65rem 1.25rem;
+    font-size: 0.9rem;
+    font-weight: 700;
   }
 
   .reviews-carousel-wrapper {
