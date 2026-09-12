@@ -49,7 +49,7 @@ app.post('/api/contact', async (req, res) => {
   try {
     const { data, error } = await resendClient.emails.send({
       from: 'Marine Bay Hotel <onboarding@resend.dev>',
-      to: 'mesithb@gmail.com',
+      to: 'tashmith.20231087@iit.ac.lk',
       replyTo: email,
       subject: `New Marine Bay Hotel inquiry from ${name}`,
       text: [
