@@ -173,8 +173,10 @@
   }
 
   .booking-search-bar {
+    width: min(100%, 300px);
     padding: 1.15rem;
     gap: 1rem;
+    transform: translateY(0.75rem);
   }
 
   .search-input-group {
